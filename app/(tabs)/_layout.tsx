@@ -1,6 +1,6 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-
+import {height, width} from '../../utility/screenDimensions'
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
@@ -10,28 +10,78 @@ export default function TabLayout() {
 
   return (
     <Tabs
+
+
       screenOptions={{
+        tabBarStyle: { height: height*.1, elevation:10, },
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
+        headerShown: true,
+        headerStyle: { backgroundColor: '#008080' }
+
+
       }}>
       <Tabs.Screen
+
         name="index"
         options={{
-          title: 'Home',
+          title: 'Dr Guide',
+          tabBarLabelStyle: { fontSize: height * .0175, fontWeight: '700', paddingBottom: 10 },
+          headerTitleStyle: { fontSize: height * .04,color:'white' },
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="login"
         options={{
-          title: 'Explore',
+
+          title: 'Login',
+          tabBarLabelStyle: { fontSize: height * .0175, fontWeight: '700', paddingBottom: 10 },
+          headerTitleStyle: { fontSize: height * .04, color: 'white' },
+
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <TabBarIcon  name={focused ? 'log-in' : 'log-in-outline'} color={color} />
           ),
         }}
       />
+      <Tabs.Screen
+        name="scan"
+        options={{
+          headerTitleStyle: { fontSize: height * .04, color: 'white' },
+          title: 'Eye Scan',
+          tabBarLabelStyle: { fontSize: height * .0175, fontWeight: '700', paddingBottom: 10 },
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon style={{}} name={focused ? 'camera' : 'camera-outline'} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="info"
+        options={{
+          headerTitleStyle: { fontSize: height * .04, color: 'white' },
+          title: 'Infomation',
+          tabBarLabelStyle: { fontSize: height * .0175, fontWeight: '700', paddingBottom: 10 },
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon name={focused ? 'information' : 'information-outline'} color={color} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="settings"
+        options={{
+          headerTitleStyle: { fontSize: height * .04, color: 'white' },
+          title: 'Settings',
+          tabBarLabelStyle: { fontSize: height * .0175, fontWeight:'700', paddingBottom:10 },
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon style={{}} name={focused ? 'settings' : 'settings-outline'} color={color} />
+          ),
+        }}
+      />
+
+
+
     </Tabs>
   );
 }
