@@ -13,24 +13,59 @@ const card = ({ title1, img1, title2, img2, isSecondTileVisible, link1, link2 })
     return (
         <View style={{ flexDirection: 'row', margin: 10 }} >
 
-            <TouchableOpacity  onPress={() => { }}
-                 >
 
-                <Link style={{ flexDirection: 'column', elevation: 10, backgroundColor: '#008080', height: width * .4, width: width * .4, alignItems: 'center', justifyContent: 'center', margin: 10, borderRadius: height * .005 }} href={`${link1}`}>
-                        <Image style={{ height: width * .2, width: width * .2 }} source={Images[img1]} />
-                        <Text style={{ color: 'white', padding: 5, fontSize: height * .02, fontWeight: '600', textAlign: 'center' }} >{title1}</Text>
-                    </Link>
 
-            </TouchableOpacity>
+         <View style={{ margin:10 }} >
+                <Link
+                    
+                   href={`${link1}`}>
+
+                   <View style={{
+                       flexDirection: 'column',
+                       elevation: 10,
+                       backgroundColor: '#008080',
+                       height: width * .4,
+                       width: width * .4,
+                       alignItems: 'center',
+                       justifyContent: 'center',
+                       margin: 10,
+                       borderRadius: height * .005
+
+                   }} >
+                       <Image style={{ height: width * .2, width: width * .2 }} source={Images[img1]} />
+                       <Text style={{ color: 'white', padding: 5, fontSize: height * .02, fontWeight: '600', textAlign: 'center' }} >{title1}</Text>
+
+                   </View>
+               </Link>
+         </View>
+
+
 
 
             {
                 isSecondTileVisible &&
-                <TouchableOpacity onPress={() => { }}
-                    style={{ elevation: 10, backgroundColor: '#008080', height: width * .4, width: width * .4, alignItems: 'center', justifyContent: 'center', margin: 10, borderRadius: height * .005 }} >
-                    <Image style={{ height: width * .15, width: width * .15 }} source={Images[img2]} />
-                    <Text style={{ color: 'white', padding: 5, fontSize: height * .02, fontWeight: '600', textAlign: 'center' }} >{title2}</Text>
-                </TouchableOpacity>
+               <View style={{ margin:10 }} >
+                 <Link
+                     href={`${link2}`}>
+
+                     <View style={{
+                         flexDirection: 'column',
+                         elevation: 10,
+                         backgroundColor: '#008080',
+                         height: width * .4,
+                         width: width * .4,
+                         alignItems: 'center',
+                         justifyContent: 'center',
+                         margin: 10,
+                         borderRadius: height * .005
+
+                     }} >
+                         <Image style={{ height: width * .2, width: width * .2 }} source={Images[img2]} />
+                         <Text style={{ color: 'white', padding: 5, fontSize: height * .02, fontWeight: '600', textAlign: 'center' }} >{title2}</Text>
+
+                     </View>
+                 </Link>
+               </View>
             }
         </View>
     )

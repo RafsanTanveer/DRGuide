@@ -4,7 +4,7 @@ import React from 'react'
 const generalInfo = () => {
     return (
         <View>
-            <Text>login</Text>
+            <Text>generalInfo</Text>
         </View>
     )
 }
