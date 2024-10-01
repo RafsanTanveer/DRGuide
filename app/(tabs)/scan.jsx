@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { height, width } from '../../utility/screenDimensions'
 import * as ImagePicker from 'expo-image-picker';
 import axios from 'axios'
+import EyeLoader from '../../utility/EyeLoader'
 
 const cloudinaryCloudName = "dfud546qz";
 
@@ -14,8 +15,9 @@ const scan = () => {
 
   const [loading, setLoading] = useState();
 
-  // const [height, setHeight] = useState(500);
-  // const [width, setWidth] = useState(700);
+  const rotation = ['0deg', '45deg', '90deg', '135deg', '225deg', '270deg', '315deg', '360deg']
+
+  const [degree, setdegree] = useState('0deg');
 
   const [leftEXse, setleftEXse] = useState("");
   const [leftHEse, setleftHEse] = useState("");
@@ -122,6 +124,12 @@ const scan = () => {
     });
 
     setLoading(true)
+
+    rotation.map((deg) => {
+      console.log(deg);
+
+      setdegree(deg)
+    })
 
     try {
       const res = await axios.post(
@@ -304,16 +312,22 @@ const scan = () => {
       {
         <View style={{ flex: 1, flexDirection: 'row', marginHorizontal: height * .01, marginVertical: height * .03 }}>
           {/* left eye*/}
-          <View style={{ borderRadius: height * .7, flex: 1, margin: height * .01, height: height * .2, justifyContent: 'center' }} >
+          <View style={{  flex: 1, margin: height * .01, height: height * .2, justifyContent: 'center' }} >
             <TouchableOpacity onPress={() => eyeScan('left')}
               style={{ backgroundColor: 'black', borderRadius: height * .015, }} >
               <Text style={{ fontSize: height * .025, fontWeight: '600', padding: 10, textAlign: 'center', color: 'white' }} >Scan</Text>
             </TouchableOpacity>
-            <Image style={{ height: height * .2, width: height * .2 }} source={require('../../assets/images/eye-shape.png')} />
 
+            <View style={{ margin: 5 }} >
+              {
+                loading ?
+                  <EyeLoader /> :
+                <Image style={{ height: height * .2, width: height * .2, transform: [{ rotate: degree }] }} source={require('../../assets/images/eye-shape.png')} />
+              }
+            </View>
 
           </View>
-
+          {/* right eye*/}
           <View style={{ borderRadius: height * .7, flex: 1, margin: height * .01, height: height * .2, justifyContent: 'center' }} >
             <TouchableOpacity onPress={() => eyeScan('right')}
               style={{ backgroundColor: 'black', borderRadius: height * .015, }} >
