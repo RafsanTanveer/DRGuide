@@ -16,7 +16,7 @@ export default function TabLayout() {
         tabBarStyle: { height: height*.1, elevation:10, },
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: true,
-        headerStyle: { backgroundColor: '#008080' }
+        headerStyle: { backgroundColor: 'white' }
 
 
       }}>
@@ -26,7 +26,7 @@ export default function TabLayout() {
         options={{
           title: 'Dr Guide',
           tabBarLabelStyle: { fontSize: height * .0175, fontWeight: '700', paddingBottom: 10 },
-          headerTitleStyle: { fontSize: height * .04,color:'white' },
+          headerTitleStyle: { fontSize: height * .04, color:'black' },
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
           ),
@@ -38,7 +38,7 @@ export default function TabLayout() {
 
           title: 'Login',
           tabBarLabelStyle: { fontSize: height * .0175, fontWeight: '700', paddingBottom: 10 },
-          headerTitleStyle: { fontSize: height * .04, color: 'white' },
+          headerTitleStyle: { fontSize: height * .04, color: 'black' },
 
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon  name={focused ? 'log-in' : 'log-in-outline'} color={color} />
@@ -48,7 +48,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="scan"
         options={{
-          headerTitleStyle: { fontSize: height * .04, color: 'white' },
+          headerTitleStyle: { fontSize: height * .04, color: 'black' },
           title: 'Eye Scan',
           tabBarLabelStyle: { fontSize: height * .0175, fontWeight: '700', paddingBottom: 10 },
           tabBarIcon: ({ color, focused }) => (
@@ -59,7 +59,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="info"
         options={{
-          headerTitleStyle: { fontSize: height * .04, color: 'white' },
+          headerTitleStyle: { fontSize: height * .04, color: 'black' },
           title: 'Infomation',
           tabBarLabelStyle: { fontSize: height * .0175, fontWeight: '700', paddingBottom: 10 },
           tabBarIcon: ({ color, focused }) => (
@@ -71,7 +71,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="settings"
         options={{
-          headerTitleStyle: { fontSize: height * .04, color: 'white' },
+          headerTitleStyle: { fontSize: height * .04, color: 'black' },
           title: 'Settings',
           tabBarLabelStyle: { fontSize: height * .0175, fontWeight:'700', paddingBottom:10 },
           tabBarIcon: ({ color, focused }) => (

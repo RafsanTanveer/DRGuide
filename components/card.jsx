@@ -17,13 +17,13 @@ const card = ({ title1, img1, title2, img2, isSecondTileVisible, link1, link2 })
 
          <View style={{ margin:10 }} >
                 <Link
-                    
+
                    href={`${link1}`}>
 
                    <View style={{
                        flexDirection: 'column',
                        elevation: 10,
-                       backgroundColor: '#008080',
+                        backgroundColor: '#3D3D3D',
                        height: width * .4,
                        width: width * .4,
                        alignItems: 'center',
@@ -51,7 +51,7 @@ const card = ({ title1, img1, title2, img2, isSecondTileVisible, link1, link2 })
                      <View style={{
                          flexDirection: 'column',
                          elevation: 10,
-                         backgroundColor: '#008080',
+                                backgroundColor: '#3D3D3D',
                          height: width * .4,
                          width: width * .4,
                          alignItems: 'center',
