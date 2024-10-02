@@ -13,7 +13,8 @@ const scan = () => {
   const [leftPhotoUrl, setLeftPhotoUrl] = useState('');
   const [rightPhotoUrl, setRightPhotoUrl] = useState('');
 
-  const [loading, setLoading] = useState();
+  const [leftLoading, setLeftLoading] = useState();
+  const [rightLoading, setRightLoading] = useState();
 
   const rotation = ['0deg', '45deg', '90deg', '135deg', '225deg', '270deg', '315deg', '360deg']
 
@@ -123,13 +124,13 @@ const scan = () => {
       areas: [],
     });
 
-    setLoading(true)
+    if (eye === 'left') {
+      setLeftLoading(true)
+    }
 
-    rotation.map((deg) => {
-      console.log(deg);
-
-      setdegree(deg)
-    })
+    if (eye === 'right') {
+      setRightLoading(true)
+    }
 
     try {
       const res = await axios.post(
@@ -171,8 +172,13 @@ const scan = () => {
       console.log(error);
 
     }
-    setLoading(false)
 
+    if (eye === 'left') {
+      setLeftLoading(false)
+    }
+    if (eye === 'right') {
+      setRightLoading(false)
+    }
 
   };
 
@@ -200,7 +206,7 @@ const scan = () => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", "xtfvjyds");
-    // setLoading(true);
+
 
     const api = await fetch(
       `https://api.cloudinary.com/v1_1/${cloudinaryCloudName}/image/upload`,
@@ -219,7 +225,7 @@ const scan = () => {
 
     setURL(cloudinaryURL);
     await getMapJson(cloudinaryURL, eye);
-    // setLoading(false);
+
   };
 
 
@@ -318,13 +324,15 @@ const scan = () => {
               <Text style={{ fontSize: height * .025, fontWeight: '600', padding: 10, textAlign: 'center', color: 'white' }} >Scan</Text>
             </TouchableOpacity>
 
-            <View style={{ margin: 5 }} >
+
               {
-                loading ?
-                  <EyeLoader /> :
-                <Image style={{ height: height * .2, width: height * .2, transform: [{ rotate: degree }] }} source={require('../../assets/images/eye-shape.png')} />
+                leftLoading ?
+                  <View style={{ height: height * .2, width: height * .2, }} >
+                    <EyeLoader />
+                  </View> :
+                <Image style={{ height: height * .2, width: height * .2,  }} source={require('../../assets/images/eye-shape.png')} />
               }
-            </View>
+
 
           </View>
           {/* right eye*/}
@@ -333,8 +341,14 @@ const scan = () => {
               style={{ backgroundColor: 'black', borderRadius: height * .015, }} >
               <Text style={{ fontSize: height * .025, fontWeight: '600', padding: 10, textAlign: 'center', color: 'white' }} >Scan</Text>
             </TouchableOpacity>
-            <Image style={{ height: height * .2, width: height * .2 }} source={require('../../assets/images/eye-shape.png')} />
 
+            {
+              rightLoading ?
+                <View style={{ height: height * .2, width: height * .2, }} >
+                  <EyeLoader />
+                </View> :
+                <Image style={{ height: height * .2, width: height * .2, }} source={require('../../assets/images/eye-shape.png')} />
+            }
           </View>
         </View>
       }

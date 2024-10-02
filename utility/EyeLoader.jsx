@@ -3,7 +3,7 @@ import { Button, StyleSheet, View, Text } from 'react-native';
 import LottieView from 'lottie-react-native';
 import { height } from '../utility/screenDimensions'
 
-const EyeLoader = () => {
+const EyeLoader = (speed) => {
     const animation = useRef(null);
     useEffect(() => {
         // You can control the ref programmatically, rather than using autoPlay
@@ -12,11 +12,11 @@ const EyeLoader = () => {
 
     return (
         <View style={{
-            backgroundColor: '#fff',
+            // backgroundColor: '#fff',
             alignItems: 'center',
             justifyContent: 'center',
             flex: 1,
-            height: height * .2, width: height * .2,
+
         }}>
             <LottieView
                 autoPlay
@@ -24,9 +24,10 @@ const EyeLoader = () => {
                 style={{
                     width: 200,
                     height: 200,
+
                 }}
-                speed={1.25}
-                source={require('../assets/animations/eyeloader.json')}
+                speed={1}
+                source={require('../assets/animations/eyeloader2.json')}
             />
             <Text style={{ fontSize: 15, fontWeight: '400' }} ></Text>
         </View>
