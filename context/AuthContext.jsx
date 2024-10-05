@@ -72,6 +72,12 @@ export const AuthProvider = ({ children }) => {
 
     const userLogin = async (id, password) => {
 
+        console.log('sdfsdflig iiiiiiiiiiiiiiii');
+
+        setisLogged(true);
+
+
+
         // setIsLoading(true);
 
 
@@ -113,7 +119,6 @@ export const AuthProvider = ({ children }) => {
         // }
 
         // console.log(id, password);
-        // setisLogged(true);
 
         // localStorage.setItem('isLogged', true)
 
