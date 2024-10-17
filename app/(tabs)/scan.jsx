@@ -4,11 +4,75 @@ import { height, width } from '../../utility/screenDimensions'
 import * as ImagePicker from 'expo-image-picker';
 import axios from 'axios'
 import EyeLoader from '../../utility/EyeLoader'
+import Tflite from 'react-native-tflite';
 
 const cloudinaryCloudName = "dfud546qz";
 
+const tflite = new Tflite();
+
+let labels
+
+const loadModel = async () => {
+  return new Promise((resolve, reject) => {
+    tflite.loadModel({
+      model: '../../assets/ml/resnet50_model-maker_epoch-5_data2xofNoDR.tflite',  // Path to the .tflite model
+      // labels: 'labels.txt',  // Optional: Path to label file if available
+    }, (err, res) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(res);
+      }
+    });
+  });
+};
+
+
+
+const processImage = async (imagePath) => {
+  return new Promise((resolve, reject) => {
+    tflite.runModelOnImage({
+      path: imagePath,  // Path to the image to be processed
+      imageMean: 127.5,  // Preprocessing: mean normalization (optional)
+      imageStd: 127.5,   // Preprocessing: standard deviation normalization (optional)
+      numResults: 5,     // Number of top labels to retrieve
+      threshold: 0.1,    // Confidence threshold for predictions
+    }, (err, res) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(res);  // `res` contains the label results
+      }
+    });
+  });
+};
+
+
+const ImageLabelingScreen = ({ imagePath }) => {
+
+
+  loadModel()
+    .then(() => {
+      // Process the image using the loaded model
+      return processImage(imagePath);
+    })
+    .then((results) => {
+      labels=results  // Store the labels
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
+};
+
+
+
 
 const scan = () => {
+
+
+
+
 
   const [leftPhotoUrl, setLeftPhotoUrl] = useState('');
   const [rightPhotoUrl, setRightPhotoUrl] = useState('');
@@ -50,15 +114,21 @@ const scan = () => {
 
 
   const eyeScan = (eye) => {
+
+    ImageLabelingScreen(leftPhotoUrl)
+    console.log(labels);
+
+
     console.log(eye);
 
-    if (eye === 'left') {
-      handleOnChangeFile(leftPhotoUrl, 'left')
-    }
+    // if (eye === 'left') {
+    //   handleOnChangeFile(leftPhotoUrl, 'left')
+    // }
 
-    if (eye === 'right') {
-      handleOnChangeFile(rightPhotoUrl, 'right')
-    }
+    // if (eye === 'right') {
+    //   handleOnChangeFile(rightPhotoUrl, 'right')
+    // }
+
   }
 
 

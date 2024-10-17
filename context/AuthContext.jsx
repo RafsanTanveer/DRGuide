@@ -24,7 +24,9 @@ export const AuthProvider = ({ children }) => {
     const [isSplashLoading, setSplashLoading] = useState(false);
     const [name, setName] = useState()
     const [pmisId, setPmisId] = useState();
+
     const [isLogged, setisLogged] = useState(false)
+
     const [isPreloaing, setisPreloaing] = useState(false);
     const [photo, setphoto] = useState()
     const [presentDesig, setpresentDesig] = useState()

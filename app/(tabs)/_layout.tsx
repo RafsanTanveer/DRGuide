@@ -32,19 +32,7 @@ export default function TabLayout() {
           ),
         }}
       />
-      {/* <Tabs.Screen
-        name="login"
-        options={{
-
-          title: 'Login',
-          tabBarLabelStyle: { fontSize: height * .0175, fontWeight: '700', paddingBottom: 10 },
-          headerTitleStyle: { fontSize: height * .04, color: 'black' },
-
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon  name={focused ? 'log-in' : 'log-in-outline'} color={color} />
-          ),
-        }}
-      /> */}
+    
       <Tabs.Screen
         name="scan"
         options={{

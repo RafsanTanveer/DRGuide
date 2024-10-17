@@ -10,11 +10,11 @@ const registerModal = ({ toggleModal }) => {
 
   return (
       <View style={{
-          height: Platform.OS === 'ios' ? height * .55 : height * .7,
+          height: Platform.OS === 'ios' ? height * .55 : height * .65,
           width: width * .9,
           backgroundColor: 'white',
           alignContent: 'center',
-          marginTop: height * .04,
+          marginTop: height * .03,
           alignSelf: 'center',
           borderRadius: height * .02,
           padding: height * .03,
@@ -53,6 +53,16 @@ const registerModal = ({ toggleModal }) => {
                   }} >
 
               </TextInput>
+              <TextInput placeholder='Mobile'
+                  style={{
+                      padding: height * .009,
+                      borderWidth: StyleSheet.hairlineWidth,
+                      borderColor: 'grey',
+                      borderRadius: height * .015,
+                      marginTop: height * .02
+                  }} >
+
+              </TextInput>
               <TextInput placeholder='Password'
                   style={{
                       padding: height * .009,
@@ -78,7 +88,7 @@ const registerModal = ({ toggleModal }) => {
           </View>
 
 
-          <View style={{ flex: 1, flexDirection: 'row', marginTop: height * .065 }} >
+          <View style={{ flex: 1, flexDirection: 'row', marginTop: height * .035 }} >
               <TouchableOpacity style={{
                   flex: 1,
                   alignItems: 'center',
